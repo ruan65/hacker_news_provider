@@ -1,0 +1,55 @@
+name: hacker_news_provider
+description: It news app
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  provider:
+  http:
+  url_launcher:
+  built_value:
+  built_collection:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  build_runner:
+  built_value_generator:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #
+  
+  
