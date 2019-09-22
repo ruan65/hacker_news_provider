@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:hacker_news_provider/state/theme_state.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Root());
+
+class Root extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider<ThemeState>(
+        builder: (context) => ThemeState(), child: MyApp());
+  }
+}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeData = Provider.of<ThemeState>(context).getTheme();
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      title: 'Hucker News Provider',
+      theme: themeData,
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -25,9 +32,16 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<ThemeState>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("HN"),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.palette),
+            onPressed: () => themeState.changeTheme(),
+          )
+        ],
       ),
       body: Center(
         child: Column(
